@@ -1,6 +1,6 @@
 # Middlewares
 
-The middlewares are functions which are composed and executed in a stack-like manner upon request. If you are not familiar with the middleware stack in Koa, we highly recommend you to read the [Koa's documentation introduction](http://koajs.com/#introduction).
+Middlewares are functions which are composed and executed in a stack-like manner upon request. If you are not familiar with the middleware stack in Koa, we highly recommend you to read the [Koa's documentation introduction](http://koajs.com/#introduction).
 
 Enable the middleware in environments settings
 
@@ -37,7 +37,7 @@ module.exports = strapi => {
 
 - `initialize` (function): Called during the server boot. The callback `cb` needs to be called. Otherwise, the middleware won't be loaded into the stack.
 
-The core of Strapi embraces a small list of middlewares for performances, security and great error handling.
+The core of Strapi embraces a small list of middlewares for performance, security and great error handling.
 
 - boom
 - cors
@@ -128,7 +128,7 @@ The middlewares are injected into the Koa stack asynchronously. Sometimes it hap
 }
 ```
 
-- `timeout`: defines the maximum allowed milliseconds to load a middleware.
+- `timeout`: defines the maximum time allowed in milliseconds to load a middleware.
 - `load`:
   - `before`: array of middlewares that need to be loaded in the first place. The order of this array matters.
   - `order`: array of middlewares that need to be loaded in a specific order.
@@ -153,7 +153,7 @@ The middlewares are injected into the Koa stack asynchronously. Sometimes it hap
   }
 ```
 
-The `responseTime` middleware will be loaded first. Immediately followed by the `logger` middleware. Then, the others middlewares will be loaded asynchronously.
+The `responseTime` middleware will be loaded first. Immediately followed by the `logger` middleware. Then, the other middlewares will be loaded asynchronously.
 
 
 **Load a middleware after another one**
@@ -237,13 +237,13 @@ We assume that we set the `./config/middleware.json` file like this:
 
 Here is the loader order:
 
-1. responseTime (loaded at the very first place)
+1. responseTime (loaded in the first place)
 2. logger
 3. cors
-4. favicon (position order not guarantee)
+4. favicon (position order not guaranteed)
 5. p3p
 6. cron
-7. gzip (loaded after the p3p middlewares)
-8. response (position order not guarantee)
+7. gzip (loaded after the p3p middleware)
+8. response (position order not guaranteed)
 9. parser
-10. router (loaded at the very end place)
+10. router (loaded at the very end)
